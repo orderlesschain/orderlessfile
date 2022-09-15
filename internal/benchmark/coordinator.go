@@ -249,7 +249,6 @@ func (b *Coordinator) setInExperimentParticipatingComponents(benchmark *Benchmar
 }
 
 func (b *Coordinator) executeBenchmark(round *Round) {
-	git remote add origin git@gitlab.lrz.de:orderless/orderlessfile.git
 	logger.InfoLogger.Println("Round: ", round.Label)
 	experimentStatuses := map[string]*ExperimentStatus{}
 	wg := &sync.WaitGroup{}
