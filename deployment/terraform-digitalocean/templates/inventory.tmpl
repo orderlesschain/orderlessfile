@@ -1,0 +1,15 @@
+[nodes]
+%{ for index, ip in nodes-ips ~}
+${ip}
+%{ endfor ~}
+
+[clients]
+%{ for index, ip in clients-ips ~}
+${ip}
+%{ endfor ~}
+
+[clis]
+%{ for index, ip in cli-ips ~}
+${ip}
+%{ endfor ~}
+

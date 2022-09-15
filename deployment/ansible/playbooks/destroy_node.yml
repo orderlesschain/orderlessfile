@@ -1,0 +1,21 @@
+---
+- name: Destroying nodes to the inventories
+  hosts: nodes
+  tags: [ "destroy-nodes" ]
+  vars:
+  tasks:
+    - name: WAN network emulation delete
+      command:
+        cmd: "tc qdisc del dev {{ lookup('env', 'WAN_DRIVE') }} root netem"
+      become: yes
+      become_user: root
+      ignore_errors: yes
+    - name: Stop nodechain
+      ansible.builtin.service:
+        name: nodechain
+        state: stopped
+      ignore_errors: yes
+    - name: Delete all file in inventories
+      file:
+        state: absent
+        path: "{{ lookup('env', 'REMOTE_NODE_PATH') }}"

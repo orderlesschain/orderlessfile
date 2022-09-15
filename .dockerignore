@@ -1,0 +1,17 @@
+# Ignored files for docker images
+
+.git
+.DS_Store
+.idea
+deployment
+docs
+build
+configs
+!configs/app.env.secret
+env
+terraform.tfvars
+data
+certificates
+tensorflow-env
+orderlessfile-experiments
+orderlessfile-experiments-archive

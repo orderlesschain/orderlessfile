@@ -1,0 +1,23 @@
+---
+targetSystem: orderlessfile
+blockTimeOutMs: 1000
+blockTransactionSize: 10
+queueTickerDurationMS: 100
+gossipNodeCount: 1
+gossipIntervalMs: 1000
+transactionTimeoutSecond: 120
+totalNodeCount: 16
+totalClientCount: 16
+endorsementPolicyOrgs: 2
+proposalQueueConsumptionRateTPS: 5000
+transactionQueueConsumptionRateTPS: 10000
+contactName: filestoragecontractorderlessfile
+rounds:
+  - label: Upload and Download Files
+    benchmarkFunctionName: readwritetransactionwarm
+    numberOfClients: 16
+    numberOfKeys: 1000
+    transactionsSendDurationSecond: 60
+    totalSubmissionRate: 500
+    numberOfKeysSecond: 75
+    reportImportance: true

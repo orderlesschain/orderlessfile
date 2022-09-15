@@ -1,0 +1,21 @@
+---
+- name: Destroying clients to the inventories
+  hosts: clients
+  tags: [ "destroy-clients" ]
+  vars:
+  tasks:
+    - name: WAN network emulation delete
+      command:
+        cmd: "tc qdisc del dev {{ lookup('env', 'WAN_DRIVE') }} root netem"
+      become: yes
+      become_user: root
+      ignore_errors: yes
+    - name: Stop clientchain
+      ansible.builtin.service:
+        name: clientchain
+        state: stopped
+      ignore_errors: yes
+    - name: Delete all file in inventories
+      file:
+        state: absent
+        path: "{{ lookup('env', 'REMOTE_CLIENT_PATH') }}"
