@@ -24,9 +24,9 @@ func init() {
 	}
 	// !!!! This deletes the log with every restart
 	err := os.Remove(LogsPath + "log.log")
-	if err != nil {
-		log.Println(err)
-	}
+	//if err != nil {
+	//	log.Println(err)
+	//}
 	//err = os.Mkdir(LogsPath, os.ModePerm)
 	//if err != nil {
 	//	log.Fatal(err)
