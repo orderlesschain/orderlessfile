@@ -4,12 +4,6 @@
   tags: [ "deploy-nodes" ]
   vars:
   tasks:
-#    - name: WAN network emulation delete
-#      command:
-#        cmd: "tc qdisc del dev {{ lookup('env', 'WAN_DRIVE') }} root netem"
-#      become: yes
-#      become_user: root
-#      ignore_errors: yes
     - pam_limits:
         domain: ubuntu
         limit_type: soft
@@ -55,12 +49,6 @@
       become_user: "{{ lookup('env', 'REMOTE_USER') }}"
       notify:
         - Restart nodechain
-#    - name: WAN network emulation
-#      command:
-#        cmd: "tc qdisc add dev {{ lookup('env', 'WAN_DRIVE') }} root netem delay {{ lookup('env', 'WAN_DELAY') }}ms {{ lookup('env', 'WAN_JITTER') }}ms rate {{ lookup('env', 'WAN_RATE') }}kbit"
-#      become: yes
-#      become_user: root
-#      ignore_errors: yes
     - name: Start nodechain
       ansible.builtin.service:
         name: nodechain
